@@ -11,6 +11,7 @@ font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     color: rgb(132, 250, 132);
     box-shadow: 0 0 10px rgb(33, 175, 33);
     transition: 1s;
+    min-height: 28em;
 }
 
 .text-center:hover {

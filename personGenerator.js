@@ -57,22 +57,6 @@ const personGenerator = {
         }
     }`,
 
-    //Мужское отчество
-    secondNameMaleJson: `{
-        "count": 10,
-        "list": {     
-            "id_1": "Александров",
-            "id_2": "Максимов",
-            "id_3": "Иванов",
-            "id_4": "Артемов",
-            "id_5": "Дмитриев",
-            "id_6": "Никитов",
-            "id_7": "Михаилов",
-            "id_8": "Даниилов",
-            "id_9": "Егоров",
-            "id_10": "Андреев"
-        }
-    }`,
     professionMaleJson: `{
         "count": 10,
         "list": {
@@ -136,16 +120,39 @@ const personGenerator = {
 
     },
 
+    
     //Рандомное отчество
-    randomSecondName: function() {
-        if(this.person.gender == this.GENDER_MALE){
-            return this.randomValue(this.secondNameMaleJson) + "ич";
-        }
-        else {
-            return this.randomValue(this.secondNameMaleJson) + "на";
-        }
+    randomSecondName: function() {        
 
-    },
+        male = this.randomValue(this.firstNameMaleJson);
+
+        if(this.person.gender == this.GENDER_MALE){
+           //Мужчины
+            if(male.endsWith('а')){
+                return male.slice(0, -1) + "ич";
+            } 
+                else {
+                    if(male.endsWith('й')){
+                        return male.slice(0, -1) + "евич";
+                    } else {
+                        return male + "ович"
+                    }
+            }
+        }   else {   //Женщины
+                if(male.endsWith('а')){
+                    return male.slice(0, -1) + "ична";
+                } else {
+                    if(male.endsWith('й')){
+                         return male.slice(0, -1) + "евна";
+                    } else {
+                         return male + "овна"
+                    }
+                }
+            }
+
+     },
+
+
 
     //Рандомная фамилия
     randomSurname: function() {
